@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: postgres-db-prod
+    environment:
+      - POSTGRES_DB=sample_app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_HOST=127.0.0.1
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  nginx:
+    image: "nginx"
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./static:/static
+      - ./mediafiles:/media
+    ports:
+      - "80:80"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: django-web-prod
+    restart: on-failure
+    volumes:
+      - .:/code
+    command: bash -c "python manage.py makemigrations sample_app --noinput && python manage.py migrate --noinput &&  gunicorn project_name.wsgi:application --bind 0.0.0.0:8000"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - nginx
+      - db
+
