@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=sample_app
+      - POSTGRES_DB=sample_database_name
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_HOST=127.0.0.1
@@ -18,7 +18,7 @@ services:
     restart: on-failure
     volumes:
       - .:/code
-    command: bash -c "python manage.py makemigrations sample_app --noinput && python manage.py migrate --noinput && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations sample_app --noinput && python manage.py migrate --noinput && python3 manage.py runserver 0.0.0.0:8000 --settings=django_docker_setup.settings_local"
     ports:
       - "8000:8000"
     depends_on:
