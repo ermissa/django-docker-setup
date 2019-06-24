@@ -2,26 +2,32 @@ Docker compose project base with Django, PosgreSQL , Nginx and Gunicorn.
 
 You can use this setup in both your development and production environments. Development setup uses python's webserver. Production setup uses gunicorn and nginx.
 
-To use:
+# Setup Project
 
-- Change ***sample_app*** names in docker-compose and docker-compose.prod.yml with your app's name
-- Change ***sample_app*** name in settings.INSTALLED_APPS with your app's name
-- Change ***project_name*** name in docker-compose.prod.yml with your project's name 
-- Change ***project_name*** name in *nginx/conf.d/nginx.conf* with your project's name.
-- Change ***sample_database_name*** name in settings.DATABASES with your database name 
+Before starting to run this project ***docker*** and ***docker-compose*** should be installed on your computer.
 
-You can change these names with using search & replace feature in your IDE or editor. I have listed all necessary changes in order to give an idea about the structure of the project.
+## Installation
 
-I will create a file for environment variables soon, so you will not need to make those changes.
+- Docker Installation: https://docs.docker.com/v17.12/install/
+- Docker Compose Installation: https://docs.docker.com/compose/install/
 
+## Configurations
 
-### Start project for development environment
+- Change ***django_docker_setup*** with your project's name
+- Change ***sample_app*** names in with your app's name
+- Change ***sample_database_name*** with your database name 
+
+You can change these names with using search & replace feature in your IDE or editor.
+
+## Run Project
+
+### Run project for development environment
 
 ```
 docker-compose up
 ```
 
-### Start project for production environment
+### Run project for production environment
 
 ```
 docker-compose -f docker-compose.prod.yml up
