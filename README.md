@@ -13,11 +13,11 @@ Before starting to run this project ***docker*** and ***docker-compose*** should
 
 ## Configurations
 
-- Change ***django_docker_setup*** with your project's name
-- Change ***sample_app*** names in with your app's name
+- Change ***django_docker_setup*** your project's name
+- Change ***sample_app*** with your app's name
 - Change ***sample_database_name*** with your database name 
 
-You can change these names with using search & replace feature in your IDE or editor.
+You can change these names by using search and replace feature in your IDE or editor.
 
 ## Run Project
 
