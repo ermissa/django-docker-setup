@@ -1,4 +1,4 @@
-Docker compose project base with Django, PosgreSQL , Nginx and Gunicorn. 
+Docker compose project base with Django , PosgreSQL , Nginx , Gunicorn and Certbot. 
 
 You can use this setup in both your development and production environments. Development setup uses python's webserver. Production setup uses gunicorn and nginx.
 

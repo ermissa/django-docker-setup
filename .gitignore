@@ -1,2 +1,5 @@
-postgres/
+data/postgres
+data/certbot
+.vscode/
+.idea/
 .DS_Store
