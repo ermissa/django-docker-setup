@@ -11,4 +11,4 @@ RUN pip install -r requirements_prod.txt
 
 EXPOSE ${app_port}
 
-CMD ["python3", "manage.py", "runserver","createsuperuser"]
+CMD ["python3", "manage.py", "runserver"]

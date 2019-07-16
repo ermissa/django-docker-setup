@@ -13,22 +13,47 @@ Before starting to run this project ***docker*** and ***docker-compose*** should
 
 ## Configurations
 
-- Change ***django_docker_setup*** your project's name
-- Change ***sample_app*** with your app's name
-- Change ***sample_database_name*** with your database name 
+- Replace ***django_docker_setup*** your project's name
+- Replace ***sample_app*** with your app's name
+- Replace ***sample_database_name*** with your database name 
+- Replace ***example.com*** domain names in *data/nginx/conf_ssl.d/nginx.conf* and *init-letsencrypt* folders with your domain name(s).
 
-You can change these names by using search and replace feature in your IDE or editor.
+You can replace these names by using search and replace feature in your IDE or editor.
 
 ## Run Project
 
-### Run project for development environment
+### Run project for development environment 
 
 ```
 docker-compose up
 ```
 
-### Run project for production environment
+### Run project for production environment without Certbot
+
+**In case you don't have domain or you don't want to get SSL certificates for your domain(s) yet**,run the command below.
 
 ```
 docker-compose -f docker-compose.prod.yml up
+```
+
+### Run project for production environment with Certbot
+
+You can get your SSL certificates from Let's Encrypt by running *init-letsencrypt.sh* script. 
+
+First make the script executable by command below,
+
+```
+chmod u+x init-letsencrypt.sh 
+```
+
+Then run the script,
+
+```
+./init-letsencrypt.sh
+```
+
+This script will also start your containers. In case you down your containers, you can restart them by following command,
+
+```
+docker-compose -f docker-compose.prod.ssl up
 ```
