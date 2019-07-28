@@ -41,7 +41,7 @@ services:
 
   web:
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile.prod
     container_name: django-web-prod
     restart: on-failure
